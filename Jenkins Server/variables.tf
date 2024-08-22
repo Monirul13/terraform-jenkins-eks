@@ -1,16 +1,16 @@
 variable "vpc_cidr" {
   description = "VPS CIDR"
-  type = string
+  type        = string
 }
 
 
 variable "public_subnets" {
   description = "Subnets CIDR"
-  type = list(string)
+  type        = list(string)
 }
 
 
 variable "instance_type" {
   description = "Instance Type"
-  type = string
+  type        = string
 }
