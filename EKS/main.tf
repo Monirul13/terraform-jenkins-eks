@@ -5,15 +5,15 @@ module "vpc" {
   name = "jenkins-vpc"
   cidr = var.vpc_cidr
 
-  azs             = data.aws_availability_zones.azs.names
+  azs = data.aws_availability_zones.azs.names
 
   private_subnets = var.private_subnets
   public_subnets  = var.public_subnets
-  
+
 
   enable_dns_hostnames = true
-  enable_nat_gateway = true
-  single_nat_gateway = true
+  enable_nat_gateway   = true
+  single_nat_gateway   = true
 
 
   tags = {
@@ -29,7 +29,7 @@ module "vpc" {
     "kubernetes.io/cluster/my-eks-cluster" = "shared"
     "kubernetes.io/role/internal-elb"      = 1
   }
-  
+
 }
 
 
@@ -48,7 +48,7 @@ module "eks" {
   subnet_ids = module.vpc.private_subnets
 
 
-eks_managed_node_groups = {
+  eks_managed_node_groups = {
     example = {
       #ami_type       = "AL2023_x86_64_STANDARD"
       instance_types = ["t2.micro"]
